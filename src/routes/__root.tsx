@@ -7,10 +7,16 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { type ReactNode } from "react";
+
+import { CartProvider } from "@/context/cart-context";
+import { CartSidebar } from "@/components/cart-sidebar";
+import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
+import { FloatingUI } from "@/components/floating-ui";
+import { CookieBanner } from "@/components/cookie-banner";
 
 import appCss from "../styles.css?url";
-import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
   return (
@@ -37,9 +43,6 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
-  useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
-  }, [error]);
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -77,10 +80,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Golden Crust Bakery — Freshly Baked Every Morning" },
-      { name: "description", content: "Handcrafted breads, pastries, cakes and desserts baked fresh daily with the finest organic ingredients. Family-owned artisan bakery." },
+      { title: "Golden Crust Bakery — Freshly Baked Every Morning | New Delhi" },
+      {
+        name: "description",
+        content:
+          "Handcrafted breads, pastries, cakes and desserts baked fresh daily with the finest organic ingredients. Family-owned artisan bakery in New Delhi.",
+      },
       { property: "og:title", content: "Golden Crust Bakery" },
-      { property: "og:description", content: "Handcrafted breads, pastries and cakes made with the finest ingredients." },
+      {
+        property: "og:description",
+        content:
+          "Handcrafted breads, pastries and cakes made with the finest ingredients. New Delhi's favourite artisan bakery.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -88,7 +99,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&display=swap" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&display=swap",
+      },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
   }),
@@ -117,8 +131,16 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <CartProvider>
+        <Navbar />
+        <main>
+          <Outlet />
+        </main>
+        <Footer />
+        <FloatingUI />
+        <CookieBanner />
+        <CartSidebar />
+      </CartProvider>
     </QueryClientProvider>
   );
 }
