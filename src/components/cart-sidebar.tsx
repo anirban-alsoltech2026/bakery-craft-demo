@@ -1,4 +1,4 @@
-import { Minus, Plus, ShoppingBag, Trash2 } from "lucide-react";
+import { MessageCircle, Minus, Plus, ShoppingBag, Trash2 } from "lucide-react";
 import { useCart } from "@/context/cart-context";
 import {
   Sheet,
@@ -9,10 +9,17 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
+import { buildWhatsAppOrderUrl } from "@/lib/whatsapp";
 
 export function CartSidebar() {
   const { items, isOpen, closeCart, updateQuantity, removeItem, totalItems, totalPrice } =
     useCart();
+
+  function handleCheckout() {
+    if (items.length === 0) return;
+    const url = buildWhatsAppOrderUrl(items, totalPrice);
+    window.open(url, "_blank", "noopener,noreferrer");
+  }
 
   return (
     <Sheet open={isOpen} onOpenChange={(open) => !open && closeCart()}>
@@ -104,10 +111,12 @@ export function CartSidebar() {
                 </span>
               </div>
               <Button
-                className="w-full rounded-full bg-chocolate text-cream hover:bg-coffee transition-colors"
+                onClick={handleCheckout}
+                className="w-full rounded-full bg-[#25D366] text-white hover:bg-[#1ebe5d] transition-colors flex items-center justify-center gap-2"
                 size="lg"
               >
-                Checkout
+                <MessageCircle className="h-5 w-5" />
+                Order via WhatsApp
               </Button>
             </div>
           </>
