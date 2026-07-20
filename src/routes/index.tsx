@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import {
   Star,
@@ -84,19 +84,19 @@ function Hero() {
             ingredients — slow-fermented, wood-fired, and delivered warm.
           </p>
           <div className="mt-10 flex flex-wrap gap-3">
-            <a
-              href="/menu"
+            <Link
+              to="/menu"
               className="group inline-flex items-center gap-2 rounded-full bg-gold px-7 py-3.5 text-sm font-semibold text-coffee hover:bg-gold-soft transition-all hover:scale-105 shadow-lg shadow-gold/20"
             >
               Order Online
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </a>
-            <a
-              href="/menu"
+            </Link>
+            <Link
+              to="/menu"
               className="inline-flex items-center gap-2 rounded-full border border-cream/40 bg-cream/5 backdrop-blur px-7 py-3.5 text-sm font-semibold text-cream hover:bg-cream/15 transition-colors"
             >
               View Menu
-            </a>
+            </Link>
           </div>
 
           <div className="mt-16 flex flex-wrap items-center gap-8 text-cream/70">
@@ -123,7 +123,7 @@ function Hero() {
 
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-yellow-600/60 text-xs uppercase tracking-widest">
         <span className="font-bold text-yellow-600/80 animate-pulse">Scroll</span>
-        <Mouse className="text-yellow-600/80 animate-pulse"/>
+        <Mouse className="text-yellow-600/80 animate-pulse" />
       </div>
     </section>
   );
