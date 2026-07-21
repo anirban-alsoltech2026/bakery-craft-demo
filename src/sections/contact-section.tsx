@@ -38,12 +38,15 @@ export function ContactSection() {
               </a>
             ))}
           </div>
-          <div className="playful-map relative mt-10 grid aspect-[16/9] place-items-center overflow-hidden">
-            <div className="absolute inset-0 bg-[linear-gradient(45deg,#eed9c4_25%,transparent_25%,transparent_75%,#eed9c4_75%),linear-gradient(45deg,#eed9c4_25%,transparent_25%,transparent_75%,#eed9c4_75%)] bg-[length:24px_24px] bg-[position:0_0,12px_12px] opacity-40" />
-            <div className="relative text-center text-coffee/70">
-              <MapPin className="h-8 w-8 mx-auto text-gold" />
-              <div className="mt-2 text-sm">Google Maps embed</div>
-            </div>
+          <div className="playful-map relative mt-10 aspect-[16/9] overflow-hidden">
+            <iframe
+              title="Alsol Technology Solution location on Google Maps"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14736.20868280687!2d88.43091629999999!3d22.577151999999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0275ed5e5b4e83%3A0xa3d163cd4913eb0b!2sAlsol%20Technology%20Solution%20Pvt.%20Ltd.!5e0!3m2!1sen!2sin!4v1784641484912!5m2!1sen!2sin"
+              className="h-full w-full border-0"
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+            />
           </div>
         </div>
         <form

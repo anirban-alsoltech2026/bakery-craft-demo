@@ -4,6 +4,7 @@ import {
   ArrowRight,
   ArrowUpRight,
   Check,
+  Croissant,
   Heart,
   Instagram,
   PackageCheck,
@@ -45,16 +46,22 @@ function useReveal() {
 function Hero() {
   return (
     <section className="playful-hero">
-      <div className="hero-doodle hero-doodle-one">fresh!</div>
+      <div className="hero-doodle hero-doodle-one hero-comic-bubble">FRESH!</div>
       <div className="hero-doodle hero-doodle-two">✦</div>
       <div className="mx-auto grid min-h-[94vh] max-w-7xl items-center gap-10 px-6 pb-16 pt-32 lg:grid-cols-[1.05fr_0.95fr]">
         <div className="relative z-10 animate-fade-up">
-          <span className="brand-pill">
-            <Sparkles className="h-4 w-4" /> Small batches · Big feelings
-          </span>
+          {/* <span className="brand-pill">
+            <Croissant className="h-7 w-7" /> Small batches · Big feelings
+          </span> */}
           <h1 className="hero-playful-title">
             Baked to make
-            <span>your day.</span>
+            <span>
+              your day
+              <Croissant
+                aria-hidden="true"
+                className="ml-[0.1em] inline-block size-[0.23em] animate-spin align-[-0.03em] stroke-[2.25] [animation-duration:4s]"
+              />
+            </span>
           </h1>
           <p className="mt-6 max-w-lg text-lg leading-relaxed text-coffee/75 sm:text-xl">
             Joyfully over-the-top pastries, slow-fermented breads, and celebration cakes made from
@@ -135,7 +142,7 @@ function WeeklyDrop() {
         <div className="reveal flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div>
             <span className="section-kicker">Fresh from the oven</span>
-            <h2 className="playful-heading mt-3">This week&apos;s treats.</h2>
+            <h2 className="playful-heading mt-3 text-[#5c3a21]!">This week&apos;s treats.</h2>
           </div>
           <Link to="/menu" className="scribble-link">
             Shop the full menu <ArrowUpRight className="h-5 w-5" />
@@ -297,7 +304,7 @@ function CakeCallout() {
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 py-24 lg:grid-cols-2 lg:py-32">
         <div className="reveal order-2 lg:order-1">
           <span className="section-kicker text-[#d9544d]">Make a wish</span>
-          <h2 className="playful-heading mt-3">Big day? Bring cake.</h2>
+          <h2 className="playful-heading mt-3 text-[#79b3a0]!">Big day? Bring cake.</h2>
           <p className="mt-6 max-w-lg text-lg leading-relaxed text-coffee/70">
             Birthdays, weddings, “I made it through Tuesday”—we make custom cakes for every kind of
             celebration.
