@@ -24,16 +24,12 @@ export function GallerySection() {
   ];
   const [open, setOpen] = useState<string | null>(null);
   return (
-    <section className="pt-32 pb-28 lg:pt-40 lg:pb-36 bg-coffee text-cream">
+    <section className="playful-gallery pt-32 pb-28 text-cream lg:pt-40 lg:pb-36">
       <div className="mx-auto max-w-7xl px-6">
         <div className="flex flex-col lg:flex-row justify-between items-end gap-6 reveal">
           <div>
-            <span className="text-xs uppercase tracking-[0.25em] text-gold font-semibold">
-              Gallery
-            </span>
-            <h2 className="mt-3 font-display text-4xl sm:text-5xl lg:text-6xl">
-              From oven to table.
-            </h2>
+            <span className="section-kicker text-[#ffe89d]">Gallery</span>
+            <h2 className="playful-heading mt-3 text-[#fff8ea]">From oven to table.</h2>
           </div>
           <p className="max-w-md text-cream/70">
             Peek inside the ovens and hands that shape your morning.
@@ -44,7 +40,7 @@ export function GallerySection() {
             <button
               key={i}
               onClick={() => setOpen(im.src)}
-              className={`reveal relative overflow-hidden rounded-2xl group ${im.span}`}
+              className={`gallery-play-tile reveal group relative overflow-hidden ${im.span}`}
               style={{ transitionDelay: `${i * 50}ms` }}
             >
               <img

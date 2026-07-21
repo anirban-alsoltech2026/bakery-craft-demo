@@ -89,17 +89,15 @@ export function MenuSection({ onAdd }: { onAdd: (product: Product) => void }) {
   const list = active === "All" ? PRODUCTS : PRODUCTS.filter((p) => p.cat === active);
 
   return (
-    <section className="relative pt-32 pb-28 lg:pt-40 lg:pb-36 bg-muted/50">
+    <section className="playful-subpage subpage-cream relative pt-32 pb-28 lg:pt-40 lg:pb-36">
       <div className="mx-auto max-w-7xl px-6">
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 reveal">
           <div className="max-w-xl">
-            <span className="text-xs uppercase tracking-[0.25em] text-gold font-semibold">
-              Our Menu
-            </span>
-            <h2 className="mt-3 font-display text-4xl sm:text-5xl lg:text-6xl text-chocolate leading-tight">
-              Baked with love,
+            <span className="section-kicker">Our Menu</span>
+            <h2 className="playful-heading mt-3">
+              <em className="text-[#5C3A21] not-italic">Baked with love,</em>
               <br />
-              <em className="text-gold not-italic">served with care.</em>
+              <em className="text-[#d9544d] not-italic">served with care.</em>
             </h2>
           </div>
           <p className="max-w-md text-coffee/70">
@@ -113,11 +111,7 @@ export function MenuSection({ onAdd }: { onAdd: (product: Product) => void }) {
             <button
               key={c}
               onClick={() => setActive(c)}
-              className={`rounded-full px-5 py-2 text-sm font-medium transition-all ${
-                active === c
-                  ? "bg-chocolate text-cream"
-                  : "bg-cream text-coffee/70 hover:bg-chocolate/10 border border-border"
-              }`}
+              className={`playful-filter ${active === c ? "is-active" : ""}`}
             >
               {c}
             </button>
@@ -128,7 +122,7 @@ export function MenuSection({ onAdd }: { onAdd: (product: Product) => void }) {
           {list.map((p, i) => (
             <article
               key={p.name}
-              className="group reveal bg-cream rounded-2xl overflow-hidden border border-border hover:shadow-2xl hover:-translate-y-1 transition-all duration-500"
+              className="menu-play-card group reveal overflow-hidden transition-all duration-500"
               style={{ transitionDelay: `${i * 40}ms` }}
             >
               <div className="relative aspect-square overflow-hidden bg-muted">
@@ -147,7 +141,7 @@ export function MenuSection({ onAdd }: { onAdd: (product: Product) => void }) {
                 )}
                 <button
                   onClick={() => onAdd(p)}
-                  className="absolute bottom-3 right-3 grid h-10 w-10 place-items-center rounded-full bg-chocolate text-cream translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all hover:bg-gold hover:text-coffee"
+                  className="absolute bottom-3 right-3 grid h-11 w-11 translate-y-2 place-items-center rounded-full bg-[#d9544d] text-cream opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100 hover:bg-chocolate"
                   aria-label={`Add ${p.name} to cart`}
                 >
                   <Plus className="h-4 w-4" />
@@ -182,7 +176,5 @@ export function MenuSection({ onAdd }: { onAdd: (product: Product) => void }) {
 export default function MenuPageContent() {
   useReveal();
   const { addItem } = useCart();
-  return (
-    <MenuSection onAdd={(p) => addItem({ name: p.name, price: p.price, img: p.img })} />
-  );
+  return <MenuSection onAdd={(p) => addItem({ name: p.name, price: p.price, img: p.img })} />;
 }

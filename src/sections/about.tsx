@@ -6,10 +6,10 @@ import interior from "@/assets/bakery-interior.jpg";
 export function About() {
   useReveal();
   return (
-    <section className="relative pt-32 pb-28 lg:pt-40 lg:pb-36">
+    <section className="playful-subpage subpage-pink relative pt-32 pb-28 lg:pt-40 lg:pb-36">
       <div className="mx-auto max-w-7xl px-6 grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
         <div className="reveal relative">
-          <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
+          <div className="subpage-portrait relative aspect-[4/5] overflow-hidden">
             <img
               src={interior}
               alt="Golden Crust bakery interior"
@@ -19,7 +19,7 @@ export function About() {
               height={1600}
             />
           </div>
-          <div className="absolute -bottom-6 -right-6 hidden sm:block bg-cream border border-border rounded-2xl p-6 shadow-xl max-w-[220px]">
+          <div className="floating-note absolute -bottom-6 -right-6 hidden max-w-[220px] p-6 sm:block">
             <div className="flex items-center gap-2 text-gold">
               {[1, 2, 3, 4, 5].map((i) => (
                 <Star key={i} className="h-4 w-4 fill-current" />
@@ -33,11 +33,9 @@ export function About() {
         </div>
 
         <div className="reveal">
-          <span className="text-xs uppercase tracking-[0.25em] text-gold font-semibold">
-            Our Story
-          </span>
-          <h2 className="mt-3 font-display text-4xl sm:text-5xl lg:text-6xl text-chocolate leading-tight">
-            Twenty years of <em className="text-gold not-italic">slow craft</em> & good bread.
+          <span className="section-kicker">Our Story</span>
+          <h2 className="playful-heading mt-3">
+            Twenty years of <em className="text-[#d9544d] not-italic">slow craft</em> & good bread.
           </h2>
           <p className="mt-6 text-coffee/80 leading-relaxed">
             Golden Crust began in 2004 as a small family kitchen with a single wood-fired oven and a
@@ -56,7 +54,7 @@ export function About() {
               { n: 80, s: "+", label: "Products Daily" },
               { n: 100, s: "%", label: "Fresh Ingredients" },
             ].map((s) => (
-              <div key={s.label} className="border-t border-chocolate/15 pt-4">
+              <div key={s.label} className="subpage-stat">
                 <div className="font-display text-4xl text-chocolate font-medium">
                   <Counter to={s.n} suffix={s.s} />
                 </div>
